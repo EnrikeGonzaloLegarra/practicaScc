@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoappv1
+spec:
+  selector:
+    matchLabels:
+      run: demoappv1-example
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: demoappv1-example
+    spec:
+      containers:
+        - name: demoappv1
+          image: tuxotron/demoapp:v1
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+metadata:
+  name: demoappv2
+spec:
+  selector:
+    matchLabels:
+      run: demoappv2-example
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: demoappv2-example
+    spec:
+      containers:
+        - name: demoappv2
+          image: tuxotron/demoapp:v2
+          ports:
+            - containerPort: 8080
+              protocol: TCP
