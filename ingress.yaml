@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-demoapp
+spec:
+  rules:
+  - host: "v1.practica2021.info"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: demoappv1
+            port:
+              number: 8080
+  - host: "v2.practica2021.info"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: demoappv2
+            port:
+              number: 8080
